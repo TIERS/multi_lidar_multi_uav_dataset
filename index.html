@@ -54,7 +54,7 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                 <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">UAV Tracking with Solid-State Lidars: Dynamic Multi-Frequency Scan Integration</h1>
+                    <h1 class="title is-1 publication-title">Multi-LiDAR Dataset for Indoor/Outdoor UAV Tracking</h1>
                     <div class="is-size-5 publication-authors">
                         <!-- Paper authors -->
                         <span class="author-block">
@@ -122,15 +122,17 @@
                 <h2 class="title is-3">Abstract</h2>
                 <div class="content has-text-justified">
                     <p style="margin-bottom: 0.5em">
-                        With the increasing use of drones across various industries, the navigation and tracking of these unmanned aerial vehicles (UAVs) in challenging environments, namely GNSS-denied environments, have become critical issues.
-                        In this paper, we propose a novel method for a ground-based UAV tracking system using a solid-state LiDAR, which dynamically adjusts the LiDAR frame integration time based on the distance to the UAV and its speed.
-                        Our method fuses two simultaneous scan integration frequencies for high accuracy and persistent tracking, enabling reliable state estimation of the UAV even in challenging scenarios.
-                        The application of the Inverse Covariance Intersection method and Kalman filters allows for better tracking accuracy and can handle challenging tracking scenarios.
-                        Compared to previous works in solid-state lidar tracking, this paper presents a more complete and robust solution.
+                        With the increasing prevalence of drones in various industries, the navigation and tracking of unmanned aerial vehicles (UAVs) in challenging environments, particularly GNSS-denied areas, 
+                        have become crucial concerns. To address this need, we present a novel multi-LiDAR dataset specifically designed for UAV tracking. Our dataset includes data from a spinning LiDAR, 
+                        two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB camera. This diverse sensor suite allows for research on new challenges in the field, 
+                        including limited FoV adaptability and multi-modality data processing.
+                        </p>
+                    <p style="margin-bottom: 0.5em">
+                        The dataset facilitates the evaluation of existing algorithms and the development of new ones, paving the way for advancements in UAV tracking techniques. Notably, we provide data in both indoor and 
+                        outdoor environments, enabling research on UAV tracking under varying conditions. 
                     </p>
                     <p style="margin-bottom: 0.5em">
-                        We have performed a number of experiments to evaluate the performance of the proposed tracking system and identify its limitations.
-                        Our experimental results demonstrate that the proposed method clearly outperforms the baseline method and ensures tracking is more robust across different types of trajectories.  
+                        Morevoer, we provide a baseline comparison of the state-of-the-art in LiDAR-based UAV tracking, analyzing the tracking performance with different sensors and algorithms. 
                     </p>
                 </div>
             </div>
