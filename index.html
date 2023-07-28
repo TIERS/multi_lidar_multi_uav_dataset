@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+        <!-- Replace the content tag with appropriate information -->
+        <meta name="description" content="DESCRIPTION META TAG">
+        <meta property="og:title" content="SOCIAL MEDIA TITLE TAG"/>
+        <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
+        <meta property="og:url" content="URL OF THE WEBSITE"/>
+        <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+        <meta property="og:image" content="static/image/your_banner_image.png" />
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
+
+
+        <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
+        <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+        <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+        <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <!-- Keywords for your paper to be indexed by-->
+        <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Dynamic Scan Tracking</title>
+        <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+        <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="static/css/bulma.min.css">
+        <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+        <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+        <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link rel="stylesheet" href="static/css/index.css">
+
+        <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script><!-- Load plotly.js into the DOM -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+        <script defer src="static/js/fontawesome.all.min.js"></script>
+        <script src="static/js/bulma-carousel.min.js"></script>
+        <script src="static/js/bulma-slider.min.js"></script>
+        <script src="static/js/index.js"></script>
+    </head>
+    <body>
+
+
+        <section class="hero">
+            <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">UAV Tracking with Solid-State Lidars: Dynamic Multi-Frequency Scan Integration</h1>
+                    <div class="is-size-5 publication-authors">
+                        <!-- Paper authors -->
+                        <span class="author-block">
+                        <a href="https://iacopomc.github.io/" target="_blank">Iacopo Catalano</a><sup>*</sup>,
+                        </span>
+                        <span class="author-block">
+                            Xianjia Yu<sup>*</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://scai.ethz.ch/people/jorge-pena.html" target="_blank">Jorge Peña Queralta</a><sup>*,+</sup>
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>*</sup>University of Turku, <sup>+</sup>ETH Zurich</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                    <div class="publication-links">
+                            <!-- Arxiv PDF link -->
+                        <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2304.12125.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                        </a>
+                    </span>
+
+                    <!-- Github link -->
+                    <span class="link-block">
+                    <a href="https://github.com/TIERS/dynamic_scan_tracking" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                        </a>
+                    </span>
+
+                        <!-- ArXiv abstract Link -->
+                        <span class="link-block">
+                        <a href="https://arxiv.org/abs/2304.12125" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                        </a>
+                    </span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Paper abstract -->
+        <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p style="margin-bottom: 0.5em">
+                        With the increasing use of drones across various industries, the navigation and tracking of these unmanned aerial vehicles (UAVs) in challenging environments, namely GNSS-denied environments, have become critical issues.
+                        In this paper, we propose a novel method for a ground-based UAV tracking system using a solid-state LiDAR, which dynamically adjusts the LiDAR frame integration time based on the distance to the UAV and its speed.
+                        Our method fuses two simultaneous scan integration frequencies for high accuracy and persistent tracking, enabling reliable state estimation of the UAV even in challenging scenarios.
+                        The application of the Inverse Covariance Intersection method and Kalman filters allows for better tracking accuracy and can handle challenging tracking scenarios.
+                        Compared to previous works in solid-state lidar tracking, this paper presents a more complete and robust solution.
+                    </p>
+                    <p style="margin-bottom: 0.5em">
+                        We have performed a number of experiments to evaluate the performance of the proposed tracking system and identify its limitations.
+                        Our experimental results demonstrate that the proposed method clearly outperforms the baseline method and ensures tracking is more robust across different types of trajectories.  
+                    </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+        <!-- End paper abstract -->
+
+        <br>
+
+        <!-- Dataset -->
+        <section class="hero is-small">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Dataset</h2>
+                        </div>
+                    </div>            
+                    <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item">
+                            <!-- Your image here -->
+                            <div id='tello_track_1'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Tello trajectory T1
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='tello_track_2'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Tello trajectory T2
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='tello_track_3'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Tello trajectory T3
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='tello_track_4'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Tello trajectory T4
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='tello_track_5'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Tello trajectory T5
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='autel_track_1'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Autel trajectory T1
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='autel_track_2'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Autel trajectory T2
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='autel_track_3'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Autel trajectory T3
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='autel_track_4'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Autel trajectory T4
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='autel_track_5'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Holybro trajectory T5
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_1'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Holybro trajectory T1
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_2'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Holybro trajectory T2
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_3'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Holybro trajectory T3
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_4'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Holybro trajectory T4
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_5'></div>
+                            <h2 class="subtitle has-text-centered">
+                                Holybro trajectory T5
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Dataset-->
+
+        <br>
+
+        <!-- Quantitative Results -->
+        <section class="hero is-light">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-3">Quantitative Results</h2>
+                        </div>
+                    </div>            
+                    <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item">
+                            <!-- Your image here -->
+                            <img src="static/images/table_rmse.png" alt="RMSE Results"/>
+                            <h2 class="subtitle has-text-centered">
+                            Position error (RMSE) for both constant and adaptive integration methods (N/A when the error diverges because the estimated trajectory is incomplete. Unit: meter)
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <!-- Your image here -->
+                            <img src="static/images/table_weights.png" alt="RMSE Weight function"/>
+                            <h2 class="subtitle has-text-centered">
+                            Position error (RMSE) for our adaptive integration methods for different types of weight functions (N/A when the error diverges because the estimated trajectory is incomplete. Unit: meter)
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Quantitative Results-->
+
+
+        <!--BibTex citation -->
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">Citation</h2>
+                <pre><code>@misc{catalano2023uav,
+                title={UAV Tracking with Solid-State Lidars:Dynamic Multi-Frequency Scan Integration}, 
+                author={Iacopo Catalano and Ha Sier and Xianjia Yu and Jorge Pena Queralta and Tomi Westerlund},
+                year={2023},
+                eprint={2304.12125},
+                archivePrefix={arXiv},
+                primaryClass={cs.RO}
+                }
+                </code></pre>
+            </div>
+        </section>
+        <!--End BibTex citation -->
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <p>
+                            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Statcounter tracking code -->
+        
+        <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+            <!-- End of Statcounter Code -->
+        <script src="static/js/dataset.js"></script>
+    </body>
+</html>
