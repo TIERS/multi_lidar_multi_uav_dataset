@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>uav_lidar_dataset</name>
+  <version>1.0.0</version>
+  <description>The multi LiDAR UAV tracking dataset package</description>
+
+  <!-- Maintainers -->
+  <maintainer email="imcata@utu.fi">Iacopo Catalano</maintainer>
+
+  <!-- License -->
+  <license>MIT</license>
+ 
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>pcl_conversions</depend>
+  <depend>pcl_ros</depend>
+ 
+  <export> 
+
+  </export>
+</package>
