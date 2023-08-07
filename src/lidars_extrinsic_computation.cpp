@@ -59,7 +59,7 @@ class ExtrinsicCalibrator{
         bool mid360_tf_initd = false;
 
         // Camera TF
-        int camera_integrate_frames = 5;
+        int camera_integrate_frames = 2;
         Eigen::Matrix4f camera_tf_matrix; 
         bool camera_tf_initd = false;
         pcl::PointCloud<PointType> camera_igcloud;
@@ -74,6 +74,25 @@ class ExtrinsicCalibrator{
         pcl::CropBox<PointType> cropBoxFilter;
         Eigen::Vector4f min_box_filter;
         Eigen::Vector4f max_box_filter;
+
+        // Initial guess point cloud registration
+        Eigen::AngleAxisf avia_init_rot_x;
+        Eigen::AngleAxisf avia_init_rot_y;
+        Eigen::AngleAxisf avia_init_rot_z;
+        Eigen::Translation3f avia_init_translation;
+        Eigen::Matrix4f avia_init_tf;
+
+        Eigen::AngleAxisf mid360_init_rot_x;
+        Eigen::AngleAxisf mid360_init_rot_y;
+        Eigen::AngleAxisf mid360_init_rot_z;
+        Eigen::Translation3f mid360_init_translation;
+        Eigen::Matrix4f mid360_init_tf;
+
+        Eigen::AngleAxisf camera_init_rot_x;
+        Eigen::AngleAxisf camera_init_rot_y;
+        Eigen::AngleAxisf camera_init_rot_z;
+        Eigen::Translation3f camera_init_translation;
+        Eigen::Matrix4f camera_init_tf;
 
 
     public:
@@ -94,6 +113,25 @@ class ExtrinsicCalibrator{
             
             cropBoxFilter.setMin(min_box_filter);
             cropBoxFilter.setMax(max_box_filter);
+
+            // Initialize guess estimate matrices
+            avia_init_rot_x = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
+            avia_init_rot_y = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
+            avia_init_rot_z = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
+            avia_init_translation = Eigen::Translation3f(0.0,0.0,0.0);
+            avia_init_tf = (avia_init_translation * avia_init_rot_z * avia_init_rot_y * avia_init_rot_x).matrix();
+
+            mid360_init_rot_x = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
+            mid360_init_rot_y = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitY());
+            mid360_init_rot_z = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitZ());
+            mid360_init_translation = Eigen::Translation3f(0.0, 0.0, 0.0);
+            mid360_init_tf = (mid360_init_translation * mid360_init_rot_z * mid360_init_rot_y * mid360_init_rot_x).matrix();
+
+            camera_init_rot_x = Eigen::AngleAxisf( -1.57295 , Eigen::Vector3f::UnitX());
+            camera_init_rot_y = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitY());
+            camera_init_rot_z = Eigen::AngleAxisf( -1.57295 , Eigen::Vector3f::UnitZ()); 
+            camera_init_translation = Eigen::Translation3f(0.0, 0.0, 0.0);
+            camera_init_tf = (camera_init_translation * camera_init_rot_z * camera_init_rot_y * camera_init_rot_x).matrix();
         };
          
 
@@ -113,10 +151,11 @@ class ExtrinsicCalibrator{
                 return;
             }else
             {
-                if(!avia_tf_initd){
+                if(!avia_tf_initd)
+                {
 
                     ROS_INFO("\n\n\n  Calibrate Avia ...");
-                    calibratePointCloud(avia_igcloud.makeShared(), os_cloud.makeShared(), avia_tf_matrix); 
+                    calibratePointCloud(avia_igcloud.makeShared(), os_cloud.makeShared(), avia_tf_matrix, avia_init_tf); 
                     Eigen::Matrix3f rot_matrix = avia_tf_matrix.block(0,0,3,3);
                     Eigen::Vector3f trans_vector = avia_tf_matrix.block(0,3,3,1);
 
@@ -163,10 +202,11 @@ class ExtrinsicCalibrator{
                 return;
             }else
             {
-                if(!mid360_tf_initd){
+                if(!mid360_tf_initd)
+                {
  
                     ROS_INFO("\n\n\n  Calibrate Mid-360 ...");
-                    calibratePointCloud(mid360_igcloud.makeShared(), os_cloud.makeShared(), mid360_tf_matrix);
+                    calibratePointCloud(mid360_igcloud.makeShared(), os_cloud.makeShared(), mid360_tf_matrix, mid360_init_tf);
                     Eigen::Matrix3f rot_matrix = mid360_tf_matrix.block(0,0,3,3);
                     Eigen::Vector3f trans_vector = mid360_tf_matrix.block(0,3,3,1);
         
@@ -212,16 +252,11 @@ class ExtrinsicCalibrator{
                 return;
             }else
             {
-                if(!camera_tf_initd){
+                if(!camera_tf_initd)
+                {
 
-                    Eigen::AngleAxisf init_rot_x( 0.0 , Eigen::Vector3f::UnitX());
-                    Eigen::AngleAxisf init_rot_y( 0.0, Eigen::Vector3f::UnitY());
-                    Eigen::AngleAxisf init_rot_z( 0.0 , Eigen::Vector3f::UnitZ());
-                    Eigen::Translation3f init_trans(0.0,0.0,0.0);
-                    Eigen::Matrix4f camera_tf_matrix = (init_trans * init_rot_z * init_rot_y * init_rot_x).matrix();
- 
                     ROS_INFO("\n\n\n  Calibrate Camera ...");
-                    // calibratePointCloud(camera_igcloud.makeShared(), os_cloud.makeShared(), camera_tf_matrix);
+                    calibratePointCloud(camera_igcloud.makeShared(), os_cloud.makeShared(), camera_tf_matrix, camera_init_tf);
                     Eigen::Matrix3f rot_matrix = camera_tf_matrix.block(0,0,3,3);
                     Eigen::Vector3f trans_vector = camera_tf_matrix.block(0,3,3,1);
         
@@ -231,10 +266,10 @@ class ExtrinsicCalibrator{
 
                     // publish result
                     pcl::PointCloud<PointType>  out_cloud;
-                    pcl::transformPointCloud (full_cloud_in , full_cloud_in, camera_tf_matrix);
+                    pcl::transformPointCloud (camera_igcloud , out_cloud, camera_tf_matrix);
 
                     sensor_msgs::PointCloud2 camera_msg;
-                    pcl::toROSMsg(camera_igcloud, camera_msg);
+                    pcl::toROSMsg(out_cloud, camera_msg);
                     camera_msg.header.stamp = ros::Time::now();
                     camera_msg.header.frame_id = "base_link"; 
                     pub_camera.publish(camera_msg); 
@@ -242,11 +277,11 @@ class ExtrinsicCalibrator{
                     camera_tf_initd = true;
                 }else
                 {        
-                    pcl::PointCloud<PointType>  out_cloud;
+                    pcl::PointCloud<PointType> out_cloud;
                     pcl::transformPointCloud (full_cloud_in , out_cloud, camera_tf_matrix);
 
                     sensor_msgs::PointCloud2 camera_msg;
-                    pcl::toROSMsg(camera_igcloud, camera_msg);
+                    pcl::toROSMsg(out_cloud, camera_msg);
                     camera_msg.header.stamp = ros::Time::now();
                     camera_msg.header.frame_id = "base_link"; 
                     pub_camera.publish(camera_msg); 
@@ -294,7 +329,7 @@ class ExtrinsicCalibrator{
         }
 
         void calibratePointCloud(pcl::PointCloud<PointType>::Ptr source_cloud,
-        pcl::PointCloud<PointType>::Ptr target_cloud, Eigen::Matrix4f &tf_matrix)
+        pcl::PointCloud<PointType>::Ptr target_cloud, Eigen::Matrix4f &tf_matrix, Eigen::Matrix4f &tf_init_guess_matrix)
         {
             std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
             std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
@@ -335,12 +370,6 @@ class ExtrinsicCalibrator{
 
             std::cout << "GICP start  .... " << source_cloud_downsampled->size() << " to "<< target_cloud_downsampled->size()<< std::endl;
             pcl::GeneralizedIterativeClosestPoint<pcl::PointXYZ, pcl::PointXYZ> gicp;
-            // gicp.setTransformationEpsilon(0.001);
-            // gicp.setMaxCorrespondenceDistance(2);
-            // gicp.setMaximumIterations(500);
-            // gicp.setRANSACIterations(12);  
-            // gicp.setInputSource(source_cloud_downsampled);
-            // gicp.setInputTarget(target_cloud_downsampled);
             gicp.setTransformationEpsilon(0.01);
             gicp.setMaxCorrespondenceDistance(10.0);
             gicp.setMaximumIterations(100);
@@ -350,10 +379,8 @@ class ExtrinsicCalibrator{
 
             pcl::PointCloud<PointType>::Ptr aligned_cloud (new pcl::PointCloud<PointType>);
 
-            t1 = std::chrono::steady_clock::now();
-            gicp.align(*aligned_cloud);
-            t2 = std::chrono::steady_clock::now();
-            time_span = std::chrono::duration_cast<std::chrono::duration<double, std::ratio<1, 1000>>>(t2 - t1);
+            gicp.align(*aligned_cloud, tf_init_guess_matrix);
+
             std::cout << "has converged: " << gicp.hasConverged() << " score: " <<
                 gicp.getFitnessScore() << std::endl; 
 
