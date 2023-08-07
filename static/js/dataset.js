@@ -35,7 +35,7 @@ for(let i = 1; i <= 4; i++)
       });
 }
 
-for(let i = 1; i <= 5; i++)
+for(let i = 1; i <= 7; i++)
 {
     d3.csv('./static/csv/tello_track_{}.csv'.format(i), function(err, rows){
         function unpack(rows, key) {
@@ -65,7 +65,7 @@ for(let i = 1; i <= 5; i++)
       });
 }
 
-for(let i = 1; i <= 5; i++)
+for(let i = 1; i <= 7; i++)
 {
     d3.csv('./static/csv/autel_track_{}.csv'.format(i), function(err, rows){
         function unpack(rows, key) {
@@ -95,7 +95,7 @@ for(let i = 1; i <= 5; i++)
       });
 }
 
-for(let i = 1; i <= 5; i++)
+for(let i = 1; i <= 7; i++)
 {
     d3.csv('./static/csv/holybro_track_{}.csv'.format(i), function(err, rows){
         function unpack(rows, key) {

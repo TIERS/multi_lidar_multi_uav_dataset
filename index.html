@@ -185,7 +185,7 @@
 
         <br>
 
-        <!-- Dataset -->
+        <!-- Download -->
         <section class="hero is-light">
             <div class="hero-body">
                 <div class="container is-max-desktop">
@@ -214,24 +214,357 @@
                     <div id="results-carousel" class="carousel results-carousel">
                         <div class="item">
                             <!-- Your image here -->
-                            <img src="static/images/data_sequences.png" alt="Dataset"/>
+                            <img src="static/images/data_sample.png" alt="Data Sample"/>
                             <h2 class="subtitle has-text-centered">
-                                List of data sequences in our dataset recorded indoor (T: Tello Drone, A: Autel Drone, H:Holybro Drone)
+                                Data sample from the Holybro01 sequence. The left column shows the LiDAR point cloud from the Avia and the OS-1 as the right column displays the point cloud from the Mid-360 as well as
+                                the RGB image from the D435 and the signal image from the OS-1.
                             </h2>
                         </div>
                         <div class="item">
                             <!-- Your image here -->
-                            <img src="static/images/data_sample.png" alt="Data Sample"/>
+                            <img src="static/images/data_sample_outdoor.png" alt="Data Sample"/>
                             <h2 class="subtitle has-text-centered">
-                                Subsets of data from the Holybro01 sequence. The left column shows the LiDAR point cloud from the Avia and the OS-1 as the right column displays the point cloud from the Mid-360 as well as
+                                Data sample from the HolybroOut01 sequence. The left column shows the LiDAR point cloud from the Avia and the OS-1 as the right column displays the point cloud from the Mid-360 as well as
                                 the RGB image from the D435 and the signal image from the OS-1.
                             </h2>
+                        </div>
+                    </div>
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-5">Download</h2>
+                            <div class="content has-text-justified">
+                                <table>
+                                    <tr style="border-bottom:2px solid black; border-top:2px solid black">
+                                        <th>Sequence</th>
+                                        <th>Description</th>
+                                        <th>Total Size</th>
+                                        <th>Duration</th>
+                                        <th>Difficulty</th>
+                                        <th>Rosbag</th>
+                                    </tr>
+                                    <tr>
+                                        <td>HolybroStnd01</td>
+                                        <td>Structured (Up/Down)</td>
+                                        <td>8.5 GB</td>
+                                        <td>31.6s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/Eestkh_FCE1Eumck5vWpjvMBzGmsm0fHyqMxyjStKbeiTA?e=ak1HrU">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>HolybroStnd02</td>
+                                        <td>Structured (Square)</td>
+                                        <td>24.4 GB</td>
+                                        <td>90s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EbKFAGC0SxpDm1YrlWP02swBq8ZFH82vaQIw_I08cv3oCw?e=fSWUQK">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>HolybroStnd03</td>
+                                        <td>Structured (Circle)</td>
+                                        <td>20.6 GB</td>
+                                        <td>76s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/ESQY1hfKRRFErlK3j9AqzWQBOfOoZg11m6a6iBGBJt7LTA?e=KwHuIL">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:2px solid black">
+                                        <td>HolybroStnd04</td>
+                                        <td>Structured (Spiral)</td>
+                                        <td>26.5 GB</td>
+                                        <td>98s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EeNmW810305An_xfpxIcaScB35ksl6ZD_ikM45H2t8IA-Q?e=FwzcMq">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>                        
+                                    <tr>
+                                        <td>Holybro01</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>18.5 GB</td>
+                                        <td>68s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/Ebg1cKI98T9OmxKXVxaeOjEBIo4pavaiK59sDoVa1qpHUg?e=Chv0ox">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Holybro02</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>19.4 GB</td>
+                                        <td>72s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/Ecp__NycYe5KsxgErUAHZiQB7sYQk3BObs_RF0wTD5msNw?e=MFG1vg">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Holybro03</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>21.8 GB</td>
+                                        <td>81s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/Eb0VfQF5OAdPsxKvHICLudYBuqVUB4cjPYbyVhsYEosdkA?e=WEggar">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Holybro04</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>20.8 GB</td>
+                                        <td>77s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Holybro05</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>25.0 GB</td>
+                                        <td>93s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>HolybroOut01</td>
+                                        <td>Unstructured, Outdoor</td>
+                                        <td>10.1 GB</td>
+                                        <td>37.8s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:2px solid black">
+                                        <td>HolybroOut02</td>
+                                        <td>Unstructured, Outdoor</td>
+                                        <td>10.9 GB</td>
+                                        <td>40.6s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Autel01</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>11.1 GB</td>
+                                        <td>41.4s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/Ee97B5zrVGhDlcdklMil6tIBTngjBBS5hhpQDWRXeTaICQ?e=op2YBf">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Autel02</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>16.3 GB</td>
+                                        <td>60s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/ETeA74EOdnxAidVvEKLgV5QBr9UMSynm3bXnP5PcGyDqrw?e=cBR0gt">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Autel03</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>13.0 GB</td>
+                                        <td>48.6s</td>
+                                        <td>Easy</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/ERUmh7fcCvtKj2zVtGw-yKIBmiK2kG03O5BThIzWOYupng?e=KbOUcS">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Autel04</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>12.7 GB</td>
+                                        <td>47.3s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EVBAzahTXXZMr870B02b1ykBmM_PYjJBKkmfkXhvpJ6uHw?e=ulF3it">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Autel05</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>13.5 GB</td>
+                                        <td>50.2s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/ETjjgQll3E1LvY2ACKGA2FQBh5iBs3lAULw4xqSeMRXcEA?e=y6lpbE">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>AutelOut01</td>
+                                        <td>Unstructured, Outdoor</td>
+                                        <td>10.1 GB</td>
+                                        <td>37.6s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:2px solid black">
+                                        <td>AutelOut02</td>
+                                        <td>Unstructured, Outdoor</td>
+                                        <td>11.1 GB</td>
+                                        <td>41.3s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tello01</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>13.4 GB</td>
+                                        <td>49.9s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EVfRCyykwoNHmrnIlatnWQoBjphrleoACHMdJ_eSD3tzSA?e=6nUdQK">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tello02</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>15.5 GB</td>
+                                        <td>57.8s</td>
+                                        <td>Medium</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/ESNpO7Sh_FtNghEi1p31oqUBp0Dn4Zfik6RcSs6LGOEaCg?e=Ohye12">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tello03</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>15.5 GB</td>
+                                        <td>57.8s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EQnZhmqFhcpCh1JuWT36V_IBQ_ap8oaOGYXv9AGrhjt9fQ?e=Bfwhbz">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tello04</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>18.7 GB</td>
+                                        <td>69s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EX06DKRjuetBs1ykauyq0RABe1yeaf-sgZ2ftfFsrt6NQw?e=73L4ww">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tello05</td>
+                                        <td>Unstructured, Indoor</td>
+                                        <td>14.5 GB</td>
+                                        <td>54.1s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/ESp09ijjlXtPgSNyKXPHRGUB37bWPggqzasc8oay611z6A?e=AQeMRW">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>TelloOut01</td>
+                                        <td>Unstructured, Outdoor</td>
+                                        <td>10.3 GB</td>
+                                        <td>38.4s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:2px solid black">
+                                        <td>TelloOut02</td>
+                                        <td>Unstructured, Outdoor</td>
+                                        <td>7.1 GB</td>
+                                        <td>26.4s</td>
+                                        <td>Hard</td>
+                                        <td>
+                                            <a href="">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom:2px solid black">
+                                        <td>Calibration</td>
+                                        <td>Office, Indoor</td>
+                                        <td>1.3 GB</td>
+                                        <td>9.3s</td>
+                                        <td></td>
+                                        <td>
+                                            <a href="https://utufi.sharepoint.com/:u:/s/msteams_0ed7e9/EfLmYWw4aGVOuNpRsUv5L-wByYuVxgqTux6zXgB39_aHZw?e=9wtyRc">
+                                                <u>Rosbag</u>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h5 class="subtitle has-text-centered">
+                                    The dataset is available on the <a href="https://utufi.sharepoint.com/:f:/s/msteams_0ed7e9/Enr8XtayfsFJqXLqyYONBg0BxOtg6wiuvSIOGLNvK6qWoQ?e=sfisep"><u>University of Turku Servers</u></a>
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Dataset-->
+        <!-- End Download-->
 
         <br>
 
@@ -278,11 +611,16 @@
                     </div>
 
                     <br>
-
+                    
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
+                            <h2 class="title is-4">Tello</h2>
+                        </div>
+                    </div>
                     <div id="results-carousel" class="carousel results-carousel">
                         <div class="item">
                             <!-- Your image here -->
-                            <div id='tello_track_1'>Tello</div>
+                            <div id='tello_track_1'></div>
                             <h2 class="subtitle has-text-centered">
                                 Tello01 trajectory
                             </h2>
@@ -309,6 +647,18 @@
                             <div id='tello_track_5'></div>
                             <h2 class="subtitle has-text-centered">
                                 Tello05 trajectory
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='tello_track_6'></div>
+                            <h2 class="subtitle has-text-centered">
+                                TelloOut01 trajectory
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='tello_track_7'></div>
+                            <h2 class="subtitle has-text-centered">
+                                TelloOut02 trajectory
                             </h2>
                         </div>
                     </div>
@@ -351,6 +701,18 @@
                                 Autel05 trajectory
                             </h2>
                         </div>
+                        <div class="item">
+                            <div id='autel_track_6'></div>
+                            <h2 class="subtitle has-text-centered">
+                                AutelOut01 trajectory
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='autel_track_7'></div>
+                            <h2 class="subtitle has-text-centered">
+                                AutelOut02 trajectory
+                            </h2>
+                        </div>
                     </div>
 
                     <br>
@@ -389,6 +751,18 @@
                             <div id='holybro_track_5'></div>
                             <h2 class="subtitle has-text-centered">
                                 Holybro05 trajectory
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_6'></div>
+                            <h2 class="subtitle has-text-centered">
+                                HolybroOut01 trajectory
+                            </h2>
+                        </div>
+                        <div class="item">
+                            <div id='holybro_track_7'></div>
+                            <h2 class="subtitle has-text-centered">
+                                HolybroOut02 trajectory
                             </h2>
                         </div>
                     </div>
