@@ -37,24 +37,32 @@ class ExtrinsicCalibrator{
         ros::Subscriber sub_avia;
         ros::Subscriber sub_mid360;
         ros::Subscriber sub_os;
+        ros::Subscriber sub_camera;
 
         ros::Publisher pub_avia;
         ros::Publisher pub_mid360;
         ros::Publisher pub_os;
+        ros::Publisher pub_camera;
 
         tf::TransformBroadcaster tf_br;
 
         // Avia tf
-        int avia_itegrate_frames = 5;
+        int avia_integrate_frames = 5;
         pcl::PointCloud<PointType> avia_igcloud;
         Eigen::Matrix4f avia_tf_matrix; 
         bool avia_tf_initd = false;
 
         // Mid-360 TF
-        int mid360_itegrate_frames = 5;
+        int mid360_integrate_frames = 5;
         pcl::PointCloud<PointType> mid360_igcloud;
         Eigen::Matrix4f mid360_tf_matrix; 
         bool mid360_tf_initd = false;
+
+        // Camera TF
+        int camera_integrate_frames = 5;
+        Eigen::Matrix4f camera_tf_matrix; 
+        bool camera_tf_initd = false;
+        pcl::PointCloud<PointType> camera_igcloud;
 
         // Ouster TF
         Eigen::Matrix4f os_tf_matrix; 
@@ -70,13 +78,15 @@ class ExtrinsicCalibrator{
 
     public:
         ExtrinsicCalibrator(){ 
-            sub_avia = nh.subscribe<sensor_msgs::PointCloud2>("/avia_points", 1000, &ExtrinsicCalibrator::aviaCallback, this); 
+            sub_avia = nh.subscribe<sensor_msgs::PointCloud2>("/avia_points", 1000, &ExtrinsicCalibrator::aviaCallback, this);
             sub_mid360 = nh.subscribe<sensor_msgs::PointCloud2>("/mid360_points", 1000, &ExtrinsicCalibrator::mid360Callback, this);
-            sub_os = nh.subscribe<sensor_msgs::PointCloud2>("/ouster/points", 1000, &ExtrinsicCalibrator::ousterCallback, this); 
+            sub_os = nh.subscribe<sensor_msgs::PointCloud2>("/ouster/points", 1000, &ExtrinsicCalibrator::ousterCallback, this);
+            sub_camera = nh.subscribe<sensor_msgs::PointCloud2>("/camera/depth/color/points", 1000, &ExtrinsicCalibrator::cameraCallback, this);
  
             pub_avia    = nh.advertise<sensor_msgs::PointCloud2>("/a_avia", 1);
             pub_mid360    = nh.advertise<sensor_msgs::PointCloud2>("/a_mid360", 1);
             pub_os     = nh.advertise<sensor_msgs::PointCloud2>("/a_os", 1);
+            pub_camera     = nh.advertise<sensor_msgs::PointCloud2>("/a_camera", 1);
 
             // Set min and max box filter
             min_box_filter = Eigen::Vector4f(-50.0, -50.0, -50.0, 1.0);
@@ -89,22 +99,6 @@ class ExtrinsicCalibrator{
 
         ~ExtrinsicCalibrator(){};
 
-        void matrix_to_transform(Eigen::Matrix4f & matrix, tf::Transform & trans){
-            tf::Vector3 origin;
-            origin.setValue(static_cast<double>(matrix(0,3)),static_cast<double>(matrix(1,3)),static_cast<double>(matrix(2,3)));
-
-            tf::Matrix3x3 tf3d;
-            tf3d.setValue(static_cast<double>(matrix(0,0)), static_cast<double>(matrix(0,1)), static_cast<double>(matrix(0,2)),
-            static_cast<double>(matrix(1,0)), static_cast<double>(matrix(1,1)), static_cast<double>(matrix(1,2)),
-            static_cast<double>(matrix(2,0)), static_cast<double>(matrix(2,1)), static_cast<double>(matrix(2,2)));
-
-            tf::Quaternion tfqt;
-            tf3d.getRotation(tfqt);
-
-            trans.setOrigin(origin);
-            trans.setRotation(tfqt);
-        }
-
         void aviaCallback(const sensor_msgs::PointCloud2ConstPtr& pointCloudIn)
         {
             if(!os_received) return;
@@ -112,23 +106,17 @@ class ExtrinsicCalibrator{
             pcl::fromROSMsg(*pointCloudIn, full_cloud_in);
             pcl_conversions::toPCL(pointCloudIn->header, full_cloud_in.header); 
              
-            if(avia_itegrate_frames > 0)
+            if(avia_integrate_frames > 0)
             {
                 avia_igcloud += full_cloud_in; 
-                avia_itegrate_frames--; 
+                avia_integrate_frames--; 
                 return;
             }else
             {
                 if(!avia_tf_initd){
-                    Eigen::AngleAxisf init_rot_x( 0.0 , Eigen::Vector3f::UnitX());
-                    Eigen::AngleAxisf init_rot_y( 0.0 , Eigen::Vector3f::UnitY());
-                    Eigen::AngleAxisf init_rot_z( 0.0 , Eigen::Vector3f::UnitZ());
-
-                    Eigen::Translation3f init_trans(0.0,0.0,0.0);
-                    Eigen::Matrix4f init_tf = (init_trans * init_rot_z * init_rot_y * init_rot_x).matrix(); 
 
                     ROS_INFO("\n\n\n  Calibrate Avia ...");
-                    calibratePointCloud(avia_igcloud.makeShared(), os_cloud.makeShared(), avia_tf_matrix, false); 
+                    calibratePointCloud(avia_igcloud.makeShared(), os_cloud.makeShared(), avia_tf_matrix); 
                     Eigen::Matrix3f rot_matrix = avia_tf_matrix.block(0,0,3,3);
                     Eigen::Vector3f trans_vector = avia_tf_matrix.block(0,3,3,1);
 
@@ -168,23 +156,17 @@ class ExtrinsicCalibrator{
             pcl::fromROSMsg(*pointCloudIn, full_cloud_in);
             pcl_conversions::toPCL(pointCloudIn->header, full_cloud_in.header);
              
-            if(mid360_itegrate_frames > 0)
+            if(mid360_integrate_frames > 0)
             {
                 mid360_igcloud += full_cloud_in;
-                mid360_itegrate_frames--;
+                mid360_integrate_frames--;
                 return;
             }else
             {
                 if(!mid360_tf_initd){
-                    Eigen::AngleAxisf init_rot_x( 0.0 , Eigen::Vector3f::UnitX());
-                    Eigen::AngleAxisf init_rot_y( 0.0 , Eigen::Vector3f::UnitY());
-                    Eigen::AngleAxisf init_rot_z( 0.0 , Eigen::Vector3f::UnitZ());
-
-                    Eigen::Translation3f init_trans(0.0,0.0,0.0);
-                    Eigen::Matrix4f init_tf = (init_trans * init_rot_z * init_rot_y * init_rot_x).matrix();
  
                     ROS_INFO("\n\n\n  Calibrate Mid-360 ...");
-                    calibratePointCloud(mid360_igcloud.makeShared(), os_cloud.makeShared(), mid360_tf_matrix, false);
+                    calibratePointCloud(mid360_igcloud.makeShared(), os_cloud.makeShared(), mid360_tf_matrix);
                     Eigen::Matrix3f rot_matrix = mid360_tf_matrix.block(0,0,3,3);
                     Eigen::Vector3f trans_vector = mid360_tf_matrix.block(0,3,3,1);
         
@@ -214,7 +196,63 @@ class ExtrinsicCalibrator{
                     mid360_msg.header.frame_id = "base_link"; 
                     pub_mid360.publish(mid360_msg); 
                 }
-            }  
+            }
+        }
+
+        void cameraCallback(const sensor_msgs::PointCloud2ConstPtr& pointCloudIn)
+        {
+            pcl::PointCloud<PointType>  full_cloud_in;
+            pcl::fromROSMsg(*pointCloudIn, full_cloud_in);
+            pcl_conversions::toPCL(pointCloudIn->header, full_cloud_in.header);
+
+            if(camera_integrate_frames > 0)
+            {
+                camera_igcloud += full_cloud_in; 
+                camera_integrate_frames--;
+                return;
+            }else
+            {
+                if(!camera_tf_initd){
+
+                    Eigen::AngleAxisf init_rot_x( 0.0 , Eigen::Vector3f::UnitX());
+                    Eigen::AngleAxisf init_rot_y( 0.0, Eigen::Vector3f::UnitY());
+                    Eigen::AngleAxisf init_rot_z( 0.0 , Eigen::Vector3f::UnitZ());
+                    Eigen::Translation3f init_trans(0.0,0.0,0.0);
+                    Eigen::Matrix4f camera_tf_matrix = (init_trans * init_rot_z * init_rot_y * init_rot_x).matrix();
+ 
+                    ROS_INFO("\n\n\n  Calibrate Camera ...");
+                    // calibratePointCloud(camera_igcloud.makeShared(), os_cloud.makeShared(), camera_tf_matrix);
+                    Eigen::Matrix3f rot_matrix = camera_tf_matrix.block(0,0,3,3);
+                    Eigen::Vector3f trans_vector = camera_tf_matrix.block(0,3,3,1);
+        
+                    std::cout << "Camera -> base_link " << trans_vector.transpose()
+                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "camera_depth_optical_frame"
+                        << " /" << "base_link" << " 10" << std::endl;
+
+                    // publish result
+                    pcl::PointCloud<PointType>  out_cloud;
+                    pcl::transformPointCloud (full_cloud_in , full_cloud_in, camera_tf_matrix);
+
+                    sensor_msgs::PointCloud2 camera_msg;
+                    pcl::toROSMsg(camera_igcloud, camera_msg);
+                    camera_msg.header.stamp = ros::Time::now();
+                    camera_msg.header.frame_id = "base_link"; 
+                    pub_camera.publish(camera_msg); 
+
+                    camera_tf_initd = true;
+                }else
+                {        
+                    pcl::PointCloud<PointType>  out_cloud;
+                    pcl::transformPointCloud (full_cloud_in , out_cloud, camera_tf_matrix);
+
+                    sensor_msgs::PointCloud2 camera_msg;
+                    pcl::toROSMsg(camera_igcloud, camera_msg);
+                    camera_msg.header.stamp = ros::Time::now();
+                    camera_msg.header.frame_id = "base_link"; 
+                    pub_camera.publish(camera_msg); 
+                }
+            }
+  
         }
 
         void ousterCallback(const sensor_msgs::PointCloud2ConstPtr& pointCloudIn)
@@ -256,7 +294,7 @@ class ExtrinsicCalibrator{
         }
 
         void calibratePointCloud(pcl::PointCloud<PointType>::Ptr source_cloud,
-        pcl::PointCloud<PointType>::Ptr target_cloud, Eigen::Matrix4f &tf_matrix, bool save_pcd =true)
+        pcl::PointCloud<PointType>::Ptr target_cloud, Eigen::Matrix4f &tf_matrix)
         {
             std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
             std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
