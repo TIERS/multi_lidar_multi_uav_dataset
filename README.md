@@ -39,9 +39,9 @@ roslaunch uav_lidar_dataset lidars_extrinsic_computation.launch
 The computed extrinsic parameters will appear in the terminal:
 ~~~
 OS -> base_link 0 0 0 0 0 0 /os_sensor /base_link 10
-Avia -> base_link  0.157506 0.0196177 -0.186776  3.14043 -3.10279 -3.14086 /avia_frame /base_link 10
-Mid360 -> base_link   0.137913 -0.0687341  -0.192956 0.00511776  0.0395961   0.049123 /mid360_frame /base_link 10
-Camera -> base_link 0 0 0 0 0 -0.786475 /camera_depth_optical_frame /base_link 10
+Avia -> base_link   0.149354  0.0423582 -0.0524961  3.13419 -3.13908 -3.13281 /avia_frame /base_link 10
+Mid360 -> base_link   0.125546 -0.0554536   -0.20206 0.00467344  0.0270294  0.0494959 /mid360_frame /base_link 10
+Camera -> base_link -0.172863   0.11895 -0.101785 1.55222 3.11188 1.60982 /camera_depth_optical_frame /base_link 10
 ~~~
 
 ## Install
