@@ -170,7 +170,7 @@ class ExtrinsicCalibrator{
                     Eigen::Matrix3f rot_matrix = mid360_tf_matrix.block(0,0,3,3);
                     Eigen::Vector3f trans_vector = mid360_tf_matrix.block(0,3,3,1);
         
-                    std::cout << "mid360 -> base_link " << trans_vector.transpose()
+                    std::cout << "Mid360 -> base_link " << trans_vector.transpose()
                         << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "mid360_frame"
                         << " /" << "base_link" << " 10" << std::endl;
 
