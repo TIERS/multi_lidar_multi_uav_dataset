@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>Towards Robust UAV Tracking: A Multi-LiDAR Dataset for Indoor/Outdoor Navigation in GNSS-Denied Environments</h1>
+    <h1>Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset</h1>
     <a href="https://github.com/TIERS/dynamic_scan_tracking/blob/main/LICENSE"><img src="https://img.shields.io/github/license/PRBonn/kiss-icp" /></a>
     <a href="https://github.com/TIERS/uav_lidar_tracking_dataset/blob/main"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" /></a>
     <a href="https://github.com/TIERS/uav_lidar_tracking_dataset/blob/main"><img src="https://img.shields.io/badge/Windows-0078D6?st&logo=windows&logoColor=white" /></a>
@@ -8,7 +8,7 @@
     <br />
     <a href="https://tiers.github.io/uav_lidar_tracking_dataset/">Project Page</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <a href="https://arxiv.org/pdf/2304.12125.pdf">Paper</a>
+    <a href="">Paper</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href="https://github.com/TIERS/uav_lidar_tracking_dataset/issues">Contact Us</a>
   <br />
@@ -19,7 +19,7 @@
 
 </div>
 
-We present a novel multi-LiDAR dataset specifically designed for UAV tracking. Our dataset includes data from a spinning LiDAR, two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB-D camera. This diverse sensor suite allows for research on new challenges in the field, including limited FoV adaptability and multi-modality data processing. For a comprehensive list of sequences refer to the paper [Towards Robust UAV Tracking: A Multi-LiDAR Dataset for Indoor/Outdoor Navigation in GNSS-Denied Environments](https://arxiv.org/abs/2304.12125) and the [project page](https://tiers.github.io/uav_lidar_tracking_dataset) 
+We present a novel multi-LiDAR dataset specifically designed for UAV tracking. Our dataset includes data from a spinning LiDAR, two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB-D camera. This diverse sensor suite allows for research on new challenges in the field, including limited FoV adaptability and multi-modality data processing. For a comprehensive list of sequences refer to the paper [Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset]() and the [project page](https://tiers.github.io/uav_lidar_tracking_dataset) 
 
 <hr />
 
@@ -66,11 +66,11 @@ The code has been tested on Ubuntu 20.04 with ROS Noetic
 If you use this dataset for any academic work, please cite the following publication:
 
 ```
-@misc{catalano2023uav,
-    title={UAV Tracking with Solid-State Lidars:Dynamic Multi-Frequency Scan Integration}, 
-    author={Iacopo Catalano and Ha Sier and Xianjia Yu and Jorge Pena Queralta and Tomi Westerlund},
+@misc{catalano2023towards,
+    title={Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset}, 
+    author={Iacopo Catalano and Xianjia Yu and Jorge Pena Queralta},
     year={2023},
-    eprint={2304.12125},
+    eprint={},
     archivePrefix={arXiv},
     primaryClass={cs.RO}
 }
