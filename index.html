@@ -54,7 +54,7 @@
                 <div class="container is-max-desktop">
                     <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-1 publication-title">Towards Robust UAV Tracking: A Multi-LiDAR Dataset for Indoor/Outdoor Navigation in GNSS-Denied Environments</h1>
+                        <h1 class="title is-1 publication-title">Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset</h1>
                         <div class="is-size-5 publication-authors">
                             <!-- Paper authors -->
                             <span class="author-block">
@@ -76,7 +76,7 @@
                             <div class="publication-links">
                                         <!-- Arxiv PDF link -->
                                 <span class="link-block">
-                                    <a href="https://arxiv.org/pdf/2304.12125.pdf" target="_blank"
+                                    <a href="" target="_blank"
                                     class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fas fa-file-pdf"></i>
@@ -87,7 +87,7 @@
 
                                 <!-- Github link -->
                                 <span class="link-block">
-                                    <a href="https://github.com/TIERS/dynamic_scan_tracking" target="_blank"
+                                    <a href="https://github.com/TIERS/uav_multi_lidar_dataset" target="_blank"
                                     class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
@@ -98,7 +98,7 @@
 
                                     <!-- ArXiv abstract Link -->
                                 <span class="link-block">
-                                    <a href="https://arxiv.org/abs/2304.12125" target="_blank"
+                                    <a href="" target="_blank"
                                     class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="ai ai-arxiv"></i>
@@ -123,15 +123,17 @@
                         <p style="margin-bottom: 0.5em">
                             With the increasing prevalence of drones in various industries, the navigation and tracking of unmanned aerial vehicles (UAVs) in challenging environments, particularly GNSS-denied areas, 
                             have become crucial concerns. To address this need, we present a novel multi-LiDAR dataset specifically designed for UAV tracking. Our dataset includes data from a spinning LiDAR, 
-                            two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB camera. This diverse sensor suite allows for research on new challenges in the field, 
-                            including limited FoV adaptability and multi-modality data processing.
+                            two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB-D camera. This diverse sensor suite allows for research on new challenges in the field, including limited 
+                            FoV adaptability and multi-modality data processing.
                             </p>
                         <p style="margin-bottom: 0.5em">
-                            The dataset facilitates the evaluation of existing algorithms and the development of new ones, paving the way for advancements in UAV tracking techniques. Notably, we provide data in both indoor and 
-                            outdoor environments, enabling research on UAV tracking under varying conditions. 
+                            The dataset facilitates the evaluation of existing algorithms and the development of new ones, paving the way for advances in UAV tracking techniques. Notably, we provide data in both indoor and 
+                            outdoor environments. We also consider variable UAV sizes, from micro-aerial vehicles to more standard commercial UAV platforms. The outdoor trajectories are selected with close proximity to buildings, 
+                            targeting research in UAV detection in urban areas, e.g., within counter-UAV systems or docking for UAV logistics. 
                         </p>
                         <p style="margin-bottom: 0.5em">
-                            Morevoer, we provide a baseline comparison of the state-of-the-art in LiDAR-based UAV tracking, analyzing the tracking performance with different sensors and algorithms. 
+                            In addition to the dataset, we provide a baseline comparison with recent LiDAR-based UAV tracking algorithms, benchmarking the performance with different sensors, UAVs, and algorithms. Importantly, 
+                            our dataset shows that current methods have shortcomings and are unable to track UAVs consistently across different scenarios. 
                         </p>
                     </div>
                 </div>
@@ -156,14 +158,16 @@
                         <p>
                             The main contributions of this work and the presented dataset are the following:
                             <ol type="i">
-                                <li>A dataset with data from 3 different LiDAR sensors and an RGB-D camera in both indoor and outdoor environments. This is, to our knowledge, the first diverse dataset in terms of LiDAR
-                                    sensors for UAV tracking. The dataset includes a spinning LiDARs with 64 (Ouster OS1-64) channels, two different solid-state LiDARs (Livox Mid-360 and Livox Avia) with different scanning
-                                    patterns and FoVs, and an RGB-D camera (RealSense D435). Given the short range of the point cloud generated by the camera compared to the LiDARs, we only extracted RGB images from it.
-                                    Low-resolution images with depth, near-infrared, and laser reflectivity data from the Ouster sensor complete the dataset.
+                                <li>A dataset with data from 3 different LiDAR sensors and an RGB-D camera in both indoor and outdoor environments. This is, to our knowledge, the first diverse dataset in terms of LiDAR sensors for 
+                                    UAV tracking. The dataset includes a spinning LiDARs with 64 (Ouster OS1-64) channels, two different solid-state LiDARs (Livox Mid-360 and Livox Avia) with different scanning patterns and FoVs, and 
+                                    an RGB-D camera (RealSense D435). Given the short range of the point cloud generated by the camera compared to the LiDARs, we only extracted RGB images from it. Low-resolution images with depth, 
+                                    near-infrared, and laser reflectivity data from the Ouster sensor complete the dataset.
                                 </li>
-                                <li>The dataset includes sequences with motion capture-based (MOCAP) ground truth in both indoor and outdoor environments.
+                                <li>The dataset includes sequences with motion capture-based (MOCAP) ground truth in both indoor and outdoor environments. The indoor trajectories exhibit more intricate patterns than the outdoors, 
+                                    while the outdoor sequences were deliberately selected to simulate potential docking and infrastructure inspection scenarios~\cite{seo2018drone} by emphasizing their proximity to a building.
                                 </li>
-                                <li>Based on the presented dataset, we provide a baseline comparison of the state-of-the-art in LiDAR-based UAV tracking as well as comparing the tracking performance with different sensors and algorithms.
+                                <li>Based on the presented dataset, we provide a baseline comparison with recent LiDAR-based UAV tracking algorithms, benchmarking the performance with different sensors, UAVs of different sizes 
+                                    (from micro-aerial-vehicles to more standard commercial platforms), and algorithms
                                 </li>
                             </ol>
                             Our data collecting platform consists of a 64-channels Ouster spinning LiDAR (OS1), two Livox solid state LiDAR sensors: Mid-360, featuring a nearly 360° FoV, and Avia, with an almost-circular FoV.
@@ -194,17 +198,17 @@
                             <h2 class="title is-3">Dataset</h2>
                             <div class="content has-text-justified">
                                 <p>
-                                    Our dataset is organized into three distinct categories based on the environment and trajectory structure: structured indoor, unstructured indoor, and unstructured outdoor.
+                                    Our dataset is organized into three distinct categories based on the environment and trajectory structure: structured indoor, unstructured indoor, and unstructured outdoor. 
                                     Each category captures specific movement patterns and characteristics, as follows:
                                     <ol type="i">
-                                        <li>Structured Indoor: This subset comprises simple trajectories represented by predefined, systematic patterns, including a circle, a cube, a spiral, and an up and down movement.
-                                            These structured trajectories are intentionally included to provide standardized and easily interpretable movement patterns. By employing these basic trajectories, researchers
-                                            can isolate specific aspects of their methods and evaluate their performance in scenarios where different elements are "decoupled." The structured indoor trajectories act as a
-                                            reference point for understanding how well a method performs under well-defined and controlled conditions.
+                                        <li>Structured Indoor: This subset (HolybroStdn) comprises simple trajectories represented by predefined, systematic patterns, including a circle, a cube, a spiral, and an up and down movement. 
+                                            These structured trajectories are intentionally included to provide standardized, reproducible, and easily interpretable movement patterns. By employing these basic trajectories, 
+                                            ablation studies can be performed on isolated and specific aspects of different methods. This naturally allows for evaluating scenarios where different elements are <em>decoupled</em>. 
+                                            The structured indoor trajectories act as a reference point for understanding how well a method performs under well-defined and controlled conditions.
                                         </li>
-                                        <li>Unstructured: In this subset, trajectories exhibit a more irregular nature, simulating movements that occur both indoors and outdoors without strict adherence to predefined patterns.
-                                            These trajectories aim to capture the spontaneous and less structured nature of real-world flight scenarios, where a UAV's movements can vary significantly based on the environment
-                                            and other influencing factors.
+                                        <li>Unstructured: In this subset, trajectories exhibit a more irregular nature, simulating movements that occur both indoors and outdoors without strict adherence to predefined patterns. 
+                                            These trajectories aim to capture the spontaneous and less structured nature of real-world flight scenarios, where a UAV's movements can vary significantly based on the environment and 
+                                            other influencing factors.
                                         </li>
                                     </ol>
                                 </p>
@@ -783,19 +787,18 @@
                         </div>
                     </div>            
                     <div id="results-carousel" class="carousel results-carousel">
-                        <div class="item">
+                        <div class="item has-text-centered">
                             <!-- Your image here -->
                             <img src="static/images/table_rmse.png" alt="RMSE Results"/>
                             <h2 class="subtitle has-text-centered">
-                            Position error (RMSE) for the dynamic scan tracking (I<sup>EKF</sup>, I<sup>KF</sup>) and LiDAR-as-camera methods (N/A when the error diverges because the estimated trajectory is incomplete. Unit: meter)
+                            Position error (RMSE) for the dynamic scan tracking I<sup>EKF</sup> and I<sup>KF</sup> (N/A when the error diverges because the estimated trajectory is incomplete. Unit: meter)
                             </h2>
                         </div>
-                        <div class="item">
+                        <div class="item has-text-centered">
                             <!-- Your image here -->
-                            <img src="static/images/table_weights.png" alt="Percentage results"/>
+                            <img src="static/images/table_percentage.png" alt="Percentage results"/>
                             <h2 class="subtitle has-text-centered">
-                            Percentage of successfully estimated trajectories for he dynamic scan tracking (I<sup>EKF</sup>, I<sup>KF</sup>) and LiDAR-as-camera methods on the selected data subset
-                            (N/A when the method was not designed for that type of LiDAR)
+                            Percentage of successfully estimated trajectories for he dynamic scan tracking I<sup>EKF</sup> and I<sup>KF</sup> on the selected data subset (N/A when the method was not designed for that type of LiDAR)
                             </h2>
                         </div>
                     </div>
@@ -808,14 +811,14 @@
         <section class="section" id="BibTeX">
             <div class="container is-max-desktop content">
                 <h2 class="title">Citation</h2>
-                <pre><code>@misc{catalano2023uav,
-                title={UAV Tracking with Solid-State Lidars:Dynamic Multi-Frequency Scan Integration}, 
-                author={Iacopo Catalano and Ha Sier and Xianjia Yu and Jorge Pena Queralta and Tomi Westerlund},
-                year={2023},
-                eprint={2304.12125},
-                archivePrefix={arXiv},
-                primaryClass={cs.RO}
-                }
+                <pre><code>@misc{catalano2023towards,
+    title={Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset}, 
+    author={Iacopo Catalano and Ha Sier and Xianjia Yu and Jorge Pena Queralta},
+    year={2023},
+    eprint={},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO}
+    }
                 </code></pre>
             </div>
         </section>
@@ -837,11 +840,6 @@
             </div>
         </footer>
 
-        <!-- Statcounter tracking code -->
-        
-        <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-            <!-- End of Statcounter Code -->
         <script src="static/js/dataset.js"></script>
     </body>
 </html>
