@@ -33,7 +33,7 @@ rosbag play Calibration.bag -l
 ~~~
 Then run our calibration launch file:
 ~~~
-roslaunch uav_lidar_dataset lidars_extrinsic_computation.launch
+roslaunch multi_lidar_multi_uav_dataset lidars_extrinsic_computation.launch
 ~~~
 
 The computed extrinsic parameters will appear in the terminal:

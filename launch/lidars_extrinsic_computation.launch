@@ -2,14 +2,14 @@
 
     <arg name="use_sim_time" default="true" />  
   
-    <node name="avia_format_converter" pkg="uav_lidar_dataset" type="avia_format_converter" respawn="true" output="screen">
+    <node name="avia_format_converter" pkg="multi_lidar_multi_uav_dataset" type="avia_format_converter" respawn="true" output="screen">
     </node>
  
-    <node name="mid360_format_converter" pkg="uav_lidar_dataset" type="mid360_format_converter" respawn="true" output="screen"> 
+    <node name="mid360_format_converter" pkg="multi_lidar_multi_uav_dataset" type="mid360_format_converter" respawn="true" output="screen"> 
     </node>
 
-    <node name="lidars_extrinsic_computation" pkg="uav_lidar_dataset" type="lidars_extrinsic_computation" output="screen">  
+    <node name="lidars_extrinsic_computation" pkg="multi_lidar_multi_uav_dataset" type="lidars_extrinsic_computation" output="screen">  
     </node>
   
-    <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find uav_lidar_dataset)/config/lidar_calibration.rviz" /> -->
+    <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find multi_lidar_multi_uav_dataset )/config/lidar_calibration.rviz" /> -->
 </launch>

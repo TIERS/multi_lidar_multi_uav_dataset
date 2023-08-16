@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>uav_lidar_dataset</name>
+  <name>multi_lidar_multi_uav_dataset</name>
   <version>1.0.0</version>
-  <description>The multi LiDAR UAV tracking dataset package</description>
+  <description>The multi LiDAR multi UAV tracking dataset package</description>
 
   <!-- Maintainers -->
   <maintainer email="imcata@utu.fi">Iacopo Catalano</maintainer>
