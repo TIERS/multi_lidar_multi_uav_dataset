@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset</h1>
-    <a href="https://github.com/TIERS/dynamic_scan_tracking/blob/main/LICENSE"><img src="https://img.shields.io/github/license/PRBonn/kiss-icp" /></a>
+    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/blob/main/LICENSE"><img src="https://img.shields.io/github/license/PRBonn/kiss-icp" /></a>
     <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" /></a>
     <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/Windows-0078D6?st&logo=windows&logoColor=white" /></a>
     <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/mac%20os-000000?&logo=apple&logoColor=white" /></a>
