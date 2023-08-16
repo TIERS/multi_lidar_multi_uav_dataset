@@ -10,7 +10,7 @@
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href="">Paper</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <a href="https://github.com/TIERS/uav_lidar_tracking_dataset/issues">Contact Us</a>
+    <a href="https://github.com/TIERS/uav_multi_lidar_dataset/issues">Contact Us</a>
   <br />
   <br />
   <p align="center">
