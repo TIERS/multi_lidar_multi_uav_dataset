@@ -6,7 +6,7 @@
     <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/mac%20os-000000?&logo=apple&logoColor=white" /></a>
     <br />
     <br />
-    <a href="https://tiers.github.io/multi_lidar_multi_uav_dataset /">Project Page</a>
+    <a href="https://tiers.github.io/multi_lidar_multi_uav_dataset/">Project Page</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href="">Paper</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
