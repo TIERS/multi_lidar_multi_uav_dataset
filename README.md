@@ -1,16 +1,16 @@
 <div align="center">
     <h1>Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset</h1>
     <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/blob/main/LICENSE"><img src="https://img.shields.io/github/license/PRBonn/kiss-icp" /></a>
-    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" /></a>
-    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/Windows-0078D6?st&logo=windows&logoColor=white" /></a>
-    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /blob/main"><img src="https://img.shields.io/badge/mac%20os-000000?&logo=apple&logoColor=white" /></a>
+    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/blob/main"><img src="https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black" /></a>
+    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/blob/main"><img src="https://img.shields.io/badge/Windows-0078D6?st&logo=windows&logoColor=white" /></a>
+    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/blob/main"><img src="https://img.shields.io/badge/mac%20os-000000?&logo=apple&logoColor=white" /></a>
     <br />
     <br />
     <a href="https://tiers.github.io/multi_lidar_multi_uav_dataset/">Project Page</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href="">Paper</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset /issues">Contact Us</a>
+    <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/issues">Contact Us</a>
   <br />
   <br />
   <p align="center">
