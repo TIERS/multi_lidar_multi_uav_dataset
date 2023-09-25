@@ -27,7 +27,7 @@ We present a novel multi-LiDAR dataset specifically designed for UAV tracking. O
 
 We provide a ROS package to compute the extrinsic parameters between LiDARs and camera based on GICP. As the OS1 has the largest FOV, it is treated as base reference frame ("base_link") in which all the other point clouds are transformed. For the Avia, Mid-360 and Realsense D435, we integrated the first five frames to increase point cloud density.
 
-To use this package, play teh Calibration rosbag in our dataset:
+To use this package, play the Calibration rosbag from our dataset:
 ~~~
 rosbag play Calibration.bag -l
 ~~~
@@ -60,7 +60,7 @@ The code has been tested on Ubuntu 20.04 with ROS Noetic
   git clone https://github.com/TIERS/multi_lidar_multi_uav_dataset 
   cd ..
   catkin build
-  ```
+```
 
 ## Citation
 If you use this dataset for any academic work, please cite the following publication:
