@@ -8,7 +8,7 @@
     <br />
     <a href="https://tiers.github.io/multi_lidar_multi_uav_dataset/">Project Page</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <a href="">Paper</a>
+    <a href="https://arxiv.org/pdf/2310.09165.pdf">Paper</a>
     <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
     <a href="https://github.com/TIERS/multi_lidar_multi_uav_dataset/issues">Contact Us</a>
   <br />
@@ -19,7 +19,7 @@
 
 </div>
 
-We present a novel multi-LiDAR dataset specifically designed for UAV tracking. Our dataset includes data from a spinning LiDAR, two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB-D camera. This diverse sensor suite allows for research on new challenges in the field, including limited FoV adaptability and multi-modality data processing. For a comprehensive list of sequences refer to the paper [Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset]() and the [project page](https://tiers.github.io/multi_lidar_multi_uav_dataset ) 
+We present a novel multi-LiDAR dataset specifically designed for UAV tracking. Our dataset includes data from a spinning LiDAR, two solid-state LiDARs with different Field of View (FoV) and scan patterns, and an RGB-D camera. This diverse sensor suite allows for research on new challenges in the field, including limited FoV adaptability and multi-modality data processing. For a comprehensive list of sequences refer to the paper [Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset](https://arxiv.org/abs/2310.09165) and the [project page](https://tiers.github.io/multi_lidar_multi_uav_dataset ) 
 
 <hr />
 
