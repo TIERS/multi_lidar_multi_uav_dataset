@@ -235,6 +235,30 @@
                     </div>
                     <div class="columns is-centered has-text-centered">
                         <div class="column is-four-fifths">
+                            <h2 class="title is-5">Data format</h2>
+                            <div class="content has-text-justified">
+                                <p>
+                                    The data collection makes use of the rosbag format. For each type of data included in the dataset, the data format is as follows:
+                                    <ol type="i">
+                                        <li>Point cloud data from spinning LiDAR (OS1-64) recorded as <i>sensor_msgs::PointCloud</i>. Each point in the point cloud contains four values <i>(x, y , z, I)</i>, representing local Cartesian coordinates <i>(x,y,z)</i>, and the measured laser reflectance <i>(I)</i>.
+                                        </li>
+                                        <li>Point cloud data from solid-state LiDARs, Avia, and Mid-360, employs Livox's custom data format named <i>livox_ros_driver/CustomMsg</i>.
+                                        </li>
+                                        <li>Images from RGB camera at 1920×1080 resolution. The message type is <i>sensor_msgs::Image</i>.
+                                        </li>
+                                        <li>Images from the high-resolution spinning LiDAR (OS1-64) consisting of fixed-resolution range images, near-infrared images, and signal images. 
+                                        </li>
+                                        <li>Inertial data from both spinning and solid-state LiDARs, featuring three built-in 6-axis IMU sensors with a 3-axis gyroscope and a 3-axis accelerometer. The standard ROS message type is <i>sensor_msgs::Imu</i>.
+                                        </li>
+                                        <li>Ground truth data from the MOCAP system and included as <i>geometry_msgs::PoseStamped</i>.
+                                        </li>
+                                    </ol>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-four-fifths">
                             <h2 class="title is-5">Download</h2>
                             <div class="content has-text-justified">
                                 <table>
