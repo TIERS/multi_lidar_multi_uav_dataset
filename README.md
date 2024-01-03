@@ -66,12 +66,12 @@ The code has been tested on Ubuntu 20.04 with ROS Noetic
 If you use this dataset for any academic work, please cite the following publication:
 
 ```
-@misc{catalano2023towards,
-    title={Towards Robust UAV Tracking in GNSS-Denied Environments: A Multi-LiDAR Multi-UAV Dataset}, 
-    author={Iacopo Catalano and Xianjia Yu and Jorge Pena Queralta},
-    year={2023},
-    eprint={},
-    archivePrefix={arXiv},
-    primaryClass={cs.RO}
+@inproceedings{catalano2023towards,
+  title={Towards robust uav tracking in gnss-denied environments: a multi-lidar multi-uav dataset},
+  author={Catalano, Iacopo and Yu, Xianjia and Queralta, Jorge Pe{\~n}a},
+  booktitle={2023 IEEE International Conference on Robotics and Biomimetics (ROBIO)},
+  pages={1--7},
+  year={2023},
+  organization={IEEE}
 }
 ```
