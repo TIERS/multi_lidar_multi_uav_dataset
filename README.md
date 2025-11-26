@@ -44,6 +44,17 @@ Mid360 -> base_link   0.125546 -0.0554536   -0.20206 0.00467344  0.0270294  0.04
 Camera -> base_link -0.172863   0.11895 -0.101785 1.55222 3.11188 1.60982 /camera_depth_optical_frame /base_link 10
 ~~~
 
+The camera intrinsic parameters are:
+~~~
+height: 1080
+width: 1920
+distortion_model: plumb_bob
+fx: 1390.2823486328125
+cx: 964.8575439453125
+fy: 1390.7899169921875
+cy: 536.1715087890625
+~~~
+
 ## Install
 The code has been tested on Ubuntu 20.04 with ROS Noetic
 
