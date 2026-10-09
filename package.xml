@@ -19,6 +19,7 @@
   <depend>std_msgs</depend>
   <depend>pcl_conversions</depend>
   <depend>pcl_ros</depend>
+  <depend>livox_ros_driver</depend>
  
   <export> 
 

@@ -3,11 +3,6 @@
  // Include ROS library
 #include <ros/ros.h>
 
-// Include TF for transforms
-#include <tf/tf.h>
-#include <tf/transform_broadcaster.h>
-#include <tf_conversions/tf_eigen.h>
-
 // Include point clouds types
 #include <sensor_msgs/PointCloud2.h> 
  
@@ -43,8 +38,6 @@ class ExtrinsicCalibrator{
         ros::Publisher pub_mid360;
         ros::Publisher pub_os;
         ros::Publisher pub_camera;
-
-        tf::TransformBroadcaster tf_br;
 
         // Avia tf
         int avia_integrate_frames = 5;
@@ -116,8 +109,8 @@ class ExtrinsicCalibrator{
 
             // Initialize guess estimate matrices
             avia_init_rot_x = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
-            avia_init_rot_y = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
-            avia_init_rot_z = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitX());
+            avia_init_rot_y = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitY());
+            avia_init_rot_z = Eigen::AngleAxisf( 0.0 , Eigen::Vector3f::UnitZ());
             avia_init_translation = Eigen::Translation3f(0.0,0.0,0.0);
             avia_init_tf = (avia_init_translation * avia_init_rot_z * avia_init_rot_y * avia_init_rot_x).matrix();
 
@@ -160,8 +153,8 @@ class ExtrinsicCalibrator{
                     Eigen::Vector3f trans_vector = avia_tf_matrix.block(0,3,3,1);
 
                     std::cout << "Avia -> base_link " << trans_vector.transpose()
-                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "avia_frame"
-                        << " /" << "base_link" << " 10" << std::endl;
+                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "base_link"
+                        << " /" << "avia_frame" << " 10" << std::endl;
 
                     // publish result
                     pcl::PointCloud<PointType>  out_cloud;
@@ -211,8 +204,8 @@ class ExtrinsicCalibrator{
                     Eigen::Vector3f trans_vector = mid360_tf_matrix.block(0,3,3,1);
         
                     std::cout << "Mid360 -> base_link " << trans_vector.transpose()
-                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "mid360_frame"
-                        << " /" << "base_link" << " 10" << std::endl;
+                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "base_link"
+                        << " /" << "mid360_frame" << " 10" << std::endl;
 
                     // publish result
                     pcl::PointCloud<PointType>  out_cloud;
@@ -261,8 +254,8 @@ class ExtrinsicCalibrator{
                     Eigen::Vector3f trans_vector = camera_tf_matrix.block(0,3,3,1);
         
                     std::cout << "Camera -> base_link " << trans_vector.transpose()
-                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "camera_depth_optical_frame"
-                        << " /" << "base_link" << " 10" << std::endl;
+                        << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "base_link"
+                        << " /" << "camera_depth_optical_frame" << " 10" << std::endl;
 
                     // publish result
                     pcl::PointCloud<PointType>  out_cloud;
@@ -306,9 +299,9 @@ class ExtrinsicCalibrator{
             Eigen::Vector3f trans_vector = init_tf.block(0,3,3,1);
 
             if(!os_tf_initd){
-                 std::cout << "OS0 -> base_link " << trans_vector.transpose()
-                    << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "os0_sensor"
-                    << " /" << "base_link" << " 10" << std::endl;
+                 std::cout << "OS -> base_link " << trans_vector.transpose()
+                    << " " << rot_matrix.eulerAngles(2,1,0).transpose() << " /" << "base_link"
+                    << " /" << "os_sensor" << " 10" << std::endl;
 
                 os_tf_initd = true;
             }

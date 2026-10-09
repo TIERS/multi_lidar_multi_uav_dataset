@@ -18,8 +18,6 @@ find_package(catkin REQUIRED COMPONENTS
   livox_ros_driver
 )
 
-find_package(OpenCV REQUIRED)
-
 ###################################
 ## catkin specific configuration ##
 ###################################
