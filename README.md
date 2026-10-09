@@ -38,11 +38,13 @@ roslaunch multi_lidar_multi_uav_dataset lidars_extrinsic_computation.launch
 
 The computed extrinsic parameters will appear in the terminal:
 ~~~
-OS -> base_link 0 0 0 0 0 0 /os_sensor /base_link 10
-Avia -> base_link   0.149354  0.0423582 -0.0524961  3.13419 -3.13908 -3.13281 /avia_frame /base_link 10
-Mid360 -> base_link   0.125546 -0.0554536   -0.20206 0.00467344  0.0270294  0.0494959 /mid360_frame /base_link 10
-Camera -> base_link -0.172863   0.11895 -0.101785 1.55222 3.11188 1.60982 /camera_depth_optical_frame /base_link 10
+OS -> base_link 0 0 0 0 0 0 /base_link /os_sensor 10
+Avia -> base_link   0.149354  0.0423582 -0.0524961  3.13419 -3.13908 -3.13281 /base_link /avia_frame 10
+Mid360 -> base_link   0.125546 -0.0554536   -0.20206 0.00467344  0.0270294  0.0494959 /base_link /mid360_frame 10
+Camera -> base_link -0.172863   0.11895 -0.101785 1.55222 3.11188 1.60982 /base_link /camera_depth_optical_frame 10
 ~~~
+
+Each line is in `static_transform_publisher` format: `x y z yaw pitch roll parent child period`.
 
 The camera intrinsic parameters are:
 ~~~
@@ -53,6 +55,29 @@ fx: 1390.2823486328125
 cx: 964.8575439453125
 fy: 1390.7899169921875
 cy: 536.1715087890625
+~~~
+
+## Ground truth in the LiDAR frame
+
+The MOCAP ground truth (`/vrpn_client_node/<uav>/pose`) is in the `world` frame of the motion capture system. The transform from `world` to the Ouster frame (`os_sensor`, which is `base_link`) depends on the recording setup:
+
+| Setup | Sequences | x y z (m) | qx qy qz qw |
+|---|---|---|---|
+| Indoor, 2023-07-27 | Holybro01-05, Autel01-05, Tello01-05 | 16.2629 -3.9006 -0.8272 | 0.00353 -0.01129 0.69236 0.72146 |
+| Indoor, 2023-08-01 | HolybroStdn01-04 | 16.1233 -4.1902 -0.8008 | 0.00045 -0.00881 0.68473 0.72875 |
+| Outdoor, 2023-08-05 | HolybroOut01-02, AutelOut01-02, TelloOut01-02 | 20.1323 -1.2087 -1.0444 | -0.0072 -0.01412 0.99791 -0.0626 |
+
+A point is mapped with `p_os_sensor = R(q) * p_world + t`. In ROS, publish it with:
+~~~
+rosrun tf2_ros static_transform_publisher x y z qx qy qz qw os_sensor world
+~~~
+
+The transforms are estimated by aligning the MOCAP trajectory with the UAV points in the Ouster point cloud. The UAV position agrees with the Ouster points within about 5 cm indoors and 7 cm outdoors (median), also on sequences not used for the estimate. The MOCAP timestamps are 0.04-0.06 s later than the Ouster timestamps.
+
+To write the ground truth of a sequence in the Ouster frame as a TUM trajectory file (`timestamp x y z qx qy qz qw`), without ROS:
+~~~
+pip install rosbags numpy scipy
+python3 scripts/gt_to_lidar.py Holybro01.bag
 ~~~
 
 ## Install
